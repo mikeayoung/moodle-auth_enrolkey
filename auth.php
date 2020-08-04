@@ -302,7 +302,7 @@ class auth_plugin_enrolkey extends auth_plugin_base {
                   JOIN {enrol} e ON e.courseid = g.courseid
                                 AND e.enrol = 'self'
                                 AND e.customint1 = 1
-                 WHERE g.enrolmentkey = ?
-            ", [$enrolkey]));
+                 WHERE " . $DB->sql_equal('g.enrolmentkey', '?', true,true)
+             , [$enrolkey]));
     }
 }
